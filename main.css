@@ -1,0 +1,74 @@
+.carousel {
+    position: relative;
+    height: 800px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crops img as browser is resized */
+}
+
+.carousel-track-container {
+    background: lightblue;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none; /* removes bullet points */
+}
+
+/* stack the imgs on top of each other, use JS to display */
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%; /* this prop aligns the TOP of the button in the center of it's parent element */
+    transform: translateY(-50%); /* this prop will align button to the center of itself */
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+/* then why do you need to assign left-button, right-button??? if you can call the class name and element after it? */
+.carousel-button img {
+    width: 20px;
+}
+
+.button-left {
+    left: -40px;
+}
+
+.button-right {
+    right: -40px;
+}
+
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+.carousel-indicator {
+    border: 0;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    background: rgba(0,0,0, .3);
+    margin: 0px 12px;
+}
+
+/* nested class to target current slide*/
+.carousel-indicator.current-slide {
+    background: rgba(0,0,0, .75);
+}
