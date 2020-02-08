@@ -24,7 +24,11 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
 }
 
 // left arrow moves sldies to left
-
+prevButton.addEventListener('click', e => {
+    const currentSlide = track.querySelector('.current-slide');
+    const prevSlide = currentSlide.previousElementSibling;
+    moveToSlide(track, currentSlide, prevSlide);
+});
 
 // right arrow moves slides to right
 nextButton.addEventListener('click', e => {
