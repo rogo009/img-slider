@@ -7,8 +7,6 @@ const dots = Array.from(dotsNav.children); // make array out of div w/ dot-butto
 
 const slideSize = slides[0].getBoundingClientRect(); // shows all dimensions
 const slideWidth = slideSize.width; //show width only
-// refactor lines 8 + 9
-// const slideWidth = slides[0].getBoundingClientRect().width;
 
 //arrange slides next to one another, must get the slide width and arrange visually
 
@@ -17,6 +15,8 @@ const setSlidePosition = (slide, index) => {
 }
 slides.forEach(setSlidePosition);
 
+// function to remove class list and change display of each slide
+
 const moveToSlide = (track, currentSlide, targetSlide) => {
     track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
     currentSlide.classList.remove('current-slide');
@@ -24,6 +24,7 @@ const moveToSlide = (track, currentSlide, targetSlide) => {
 }
 
 // left arrow moves sldies to left
+
 prevButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.current-slide');
     const prevSlide = currentSlide.previousElementSibling;
@@ -31,6 +32,7 @@ prevButton.addEventListener('click', e => {
 });
 
 // right arrow moves slides to right
+
 nextButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.current-slide');
     const nextSlide = currentSlide.nextElementSibling;
@@ -43,3 +45,5 @@ nextButton.addEventListener('click', e => {
 // using Array.from() method to make an array out of elements
 // using getBoundingClientRect() to get object dimensions
 // can refactor lines 8 + 9 to become slideWidth = slides[0].getBoundingClientRect().width;
+// first time using: translateX, transform, .left property, using querySelector to look for a specific class name within a designated div "track" in this case line 29
+// practice using: forEach method, nextElementSibling, prevElementSibling, using parameters in arrow functions
