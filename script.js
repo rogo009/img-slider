@@ -1,12 +1,14 @@
 const track = document.querySelector('.carousel-track');
 const slides = Array.from(track.children); // make array of UL children (img slides)
-const prevButton = document.querySelector('.button-left');
 const nextButton = document.querySelector('.button-right');
+const prevButton = document.querySelector('.button-left');
 const dotsNav = document.querySelector('.carousel-nav');
 const dots = Array.from(dotsNav.children); // make array out of div w/ dot-buttons
 
 const slideSize = slides[0].getBoundingClientRect(); // shows all dimensions
 const slideWidth = slideSize.width; //show width only
+// refactor lines 8 + 9
+// const slideWidth = slides[0].getBoundingClientRect().width;
 // console.log(slideWidth);
 
 //arrange slides next to one another, must get the slide width and arrange visually
@@ -14,7 +16,6 @@ const slideWidth = slideSize.width; //show width only
 const setSlidePosition = (slide, index) => {
     slide.style.left = slideWidth * index + 'px';
 }
-
 slides.forEach(setSlidePosition);
 
 // slides[0].style.left = 0;
@@ -24,14 +25,12 @@ slides.forEach(setSlidePosition);
 // left arrow moves sldies to left
 
 // right arrow moves slides to right
-
 nextButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.current-slide');
     const nextSlide = currentSlide.nextElementSibling;
     const amountToMove = nextSlide.style.left;
-    //move to the next slide
-    console.log(amountToMove);
-})
+    track.style.transform = 'translateX(-' + amountToMove + ')';
+});
 // nav indicators moves to specific slide
 
 //readME.md 

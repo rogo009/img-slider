@@ -21,6 +21,9 @@
     padding: 0;
     margin: 0;
     list-style: none; /* removes bullet points */
+    position: relative;
+    height: 100%;
+    transition: transform 250ms ease-in; /* slow transition to next slide */
 }
 
 /* stack the imgs on top of each other, use JS to display */
