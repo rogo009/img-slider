@@ -12,9 +12,15 @@ const slideWidth = slideSize.width; //show width only
 
 //arrange slides next to one another, must get the slide width and arrange visually
 
-slides[0].style.left = 0;
-slides[1].style.left = slideWidth + 'px'; // concatenate 'px' to make it a value otherwise
-slides[2].style.left = slideWidth *2 + 'px';
+const setSlidePosition = (slide, index) => {
+    slide.style.left = slideWidth * index + 'px';
+}
+
+slides.forEach(setSlidePosition);
+
+// slides[0].style.left = 0;
+// slides[1].style.left = slideWidth + 'px'; // concatenate 'px' to make it a value
+// slides[2].style.left = slideWidth *2 + 'px';
 
 // left arrow moves sldies to left
 // right arrow moves slides to right
