@@ -9,7 +9,6 @@ const slideSize = slides[0].getBoundingClientRect(); // shows all dimensions
 const slideWidth = slideSize.width; //show width only
 // refactor lines 8 + 9
 // const slideWidth = slides[0].getBoundingClientRect().width;
-// console.log(slideWidth);
 
 //arrange slides next to one another, must get the slide width and arrange visually
 
@@ -18,19 +17,22 @@ const setSlidePosition = (slide, index) => {
 }
 slides.forEach(setSlidePosition);
 
-// slides[0].style.left = 0;
-// slides[1].style.left = slideWidth + 'px'; // concatenate 'px' to make it a value
-// slides[2].style.left = slideWidth *2 + 'px';
+const moveToSlide = (track, currentSlide, targetSlide) => {
+    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+}
 
 // left arrow moves sldies to left
+
 
 // right arrow moves slides to right
 nextButton.addEventListener('click', e => {
     const currentSlide = track.querySelector('.current-slide');
     const nextSlide = currentSlide.nextElementSibling;
-    const amountToMove = nextSlide.style.left;
-    track.style.transform = 'translateX(-' + amountToMove + ')';
+    moveToSlide(track, currentSlide, nextSlide);
 });
+
 // nav indicators moves to specific slide
 
 //readME.md 
