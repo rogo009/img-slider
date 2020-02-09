@@ -51,6 +51,9 @@ dotsNav.addEventListener('click', e => {
     const targetSlide = slides[targetIndex];
     moveToSlide(track, currentSlide, targetSlide);
 
+    currentDot.classList.remove('current-slide');
+    targetDot.classList.add('current-slide');
+
     // console.log(targetIndex); // logs the index of the button (remember it's an array) clicked
 });
 
