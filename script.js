@@ -41,6 +41,20 @@ nextButton.addEventListener('click', e => {
 
 // nav indicators moves to specific slide
 
+dotsNav.addEventListener('click', e => {
+    // what indicator was clicked on
+    const targetDot = e.target.closest('button');
+    if (!targetDot) return;
+    const currentSlide = track.querySelector('.current-slide');
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const targetIndex = dots.findIndex(dot => dot === targetDot); // returns index # of the dot clicked
+    const targetSlide = slides[targetIndex];
+    moveToSlide(track, currentSlide, targetSlide);
+
+    // console.log(targetIndex); // logs the index of the button (remember it's an array) clicked
+});
+
+
 //readME.md 
 // using Array.from() method to make an array out of elements
 // using getBoundingClientRect() to get object dimensions
