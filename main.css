@@ -12,7 +12,7 @@
 }
 
 .carousel-track-container {
-    background: lightblue;
+    /* background: lightblue; */
     height: 100%;
     position: relative;
     overflow: hidden; /* clips the imgs to it's size and hides it */
