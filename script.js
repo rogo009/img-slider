@@ -85,10 +85,3 @@ dotsNav.addEventListener('click', e => {
     // console.log(targetIndex); // logs the index of the button (remember it's an array) clicked
     hideShowArrows(slides, prevButton, nextButton, targetIndex);
 });
-
-//readME.md 
-// using Array.from() method to make an array out of elements
-// using getBoundingClientRect() to get object dimensions
-// can refactor lines 8 + 9 to become slideWidth = slides[0].getBoundingClientRect().width;
-// first time using: translateX, transform, .left property, using querySelector to look for a specific class name within a designated div "track" in this case line 29
-// practice using: forEach method, nextElementSibling, prevElementSibling, using parameters in arrow functions
