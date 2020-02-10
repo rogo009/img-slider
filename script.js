@@ -62,8 +62,21 @@ dotsNav.addEventListener('click', e => {
     const targetSlide = slides[targetIndex];
     moveToSlide(track, currentSlide, targetSlide);
     updateDots(currentDot, targetDot);
-
     // console.log(targetIndex); // logs the index of the button (remember it's an array) clicked
+
+    // if target index is either first or last of the array, make arrow buttons disappear
+
+    if (targetIndex === 0) {
+        prevButton.classList.add('is-hidden');
+        nextButton.classList.remove('is-hidden');
+    } else if (targetIndex === slides.length -1) {
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.add('is-hidden');
+    } else {
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.remove('is-hidden');
+    }
+
 });
 
 
