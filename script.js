@@ -28,6 +28,20 @@ const updateDots = (currentDot, targetDot) => {
     targetDot.classList.add('current-slide');
 }
 
+    // if target index is either first or last of the array, make arrow buttons disappear
+const hideShowArrows = (slides, prevButton, nextButton, targetIndex) => {
+    if (targetIndex === 0) {
+        prevButton.classList.add('is-hidden');
+        nextButton.classList.remove('is-hidden');
+    } else if (targetIndex === slides.length -1) {
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.add('is-hidden');
+    } else {
+        prevButton.classList.remove('is-hidden');
+        nextButton.classList.remove('is-hidden');
+    }
+}
+
 // left arrow moves sldies to left
 
 prevButton.addEventListener('click', e => {
@@ -35,8 +49,11 @@ prevButton.addEventListener('click', e => {
     const prevSlide = currentSlide.previousElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
     const prevDot = currentDot.previousElementSibling;
+    const nextIndex = slides.findIndex(slide => slide === prevSlide);
+
     moveToSlide(track, currentSlide, prevSlide);
     updateDots(currentDot, prevDot);
+    hideShowArrows(slides, prevButton, nextButton, prevIndex);
 });
 
 // right arrow moves slides to right
@@ -46,8 +63,11 @@ nextButton.addEventListener('click', e => {
     const nextSlide = currentSlide.nextElementSibling;
     const currentDot = dotsNav.querySelector('.current-slide');
     const nextDot = currentDot.nextElementSibling;
+    const nextIndex = slides.findIndex(slide => slide === nextSlide);
+
     moveToSlide(track, currentSlide, nextSlide);
     updateDots(currentDot, nextDot);
+    hideShowArrows(slides, prevButton, nextButton, nextIndex);
 });
 
 // nav indicators moves to specific slide
@@ -63,22 +83,8 @@ dotsNav.addEventListener('click', e => {
     moveToSlide(track, currentSlide, targetSlide);
     updateDots(currentDot, targetDot);
     // console.log(targetIndex); // logs the index of the button (remember it's an array) clicked
-
-    // if target index is either first or last of the array, make arrow buttons disappear
-
-    if (targetIndex === 0) {
-        prevButton.classList.add('is-hidden');
-        nextButton.classList.remove('is-hidden');
-    } else if (targetIndex === slides.length -1) {
-        prevButton.classList.remove('is-hidden');
-        nextButton.classList.add('is-hidden');
-    } else {
-        prevButton.classList.remove('is-hidden');
-        nextButton.classList.remove('is-hidden');
-    }
-
+    hideShowArrows(slides, prevButton, nextButton, targetIndex);
 });
-
 
 //readME.md 
 // using Array.from() method to make an array out of elements
